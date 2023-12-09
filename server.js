@@ -3,11 +3,12 @@ const app = express();
 
 const cors = require("cors");
 
-var corsOptions = {
-  origin: "http://localhost:5173",
-};
+// var corsOptions = {
+//   origin: "http://localhost:5173",
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+app.use(cors);
 
 app.use(express.json());
 
@@ -48,7 +49,8 @@ require("./app/routes/userreviews.routes.js")(app);
 require("./app/routes/messagetoteacher.routes.js")(app);
 
 // set port, listen for requests
-const PORT = process.env.PORT || 8080;
+// const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 80;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
