@@ -16,7 +16,7 @@ app.use(
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to apnabyte server site." });
+  res.json({ message: "Welcome to MapMySkill backend server." });
 });
 
 require("./app/routes/profile.routes.js")(app);
@@ -46,8 +46,8 @@ require("./app/routes/userreviews.routes.js")(app);
 require("./app/routes/messagetoteacher.routes.js")(app);
 
 // set port, listen for requests
-// const PORT = process.env.PORT || 8080;
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
