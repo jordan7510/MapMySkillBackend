@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-
 const cors = require("cors");
 
 // var corsOptions = {
@@ -12,10 +11,9 @@ app.use(cors);
 
 app.use(express.json());
 
-
-app.use(
-  express.urlencoded({ extended: true })
-); 
+// app.use(
+//   express.urlencoded({ extended: true })
+// );
 
 // simple route
 app.get("/", (req, res) => {
@@ -55,6 +53,4 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
-
-
-app.use("/uploads",express.static('uploads'))
+app.use("/uploads", express.static("uploads"));
