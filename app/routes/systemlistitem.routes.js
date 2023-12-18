@@ -9,8 +9,6 @@ module.exports = app => {
     router.put("/:id", systemlistitem.update);
     router.delete("/:id", systemlistitem.delete);
   
- 
-  
     app.use('/api/systemlistitem', router);
   };
   

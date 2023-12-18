@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 app.use(cors());
 
+
 // var corsOptions = {
 //   origin: "http://localhost:81",
 // };
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use(
   express.urlencoded({ extended: true })
 );
+
 
 // simple route
 app.get("/", (req, res) => {
