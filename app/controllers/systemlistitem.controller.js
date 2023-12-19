@@ -54,9 +54,6 @@ exports.findAll = async (req, res) => {
 //   });
 // };
 
-const {getOrSetCache} = require("../middleware/redis.js")
-
-
 exports.findAll = async (req, res) => {
   try {
     const systemlistData = await getOrSetCache("systemlistItem", async () => {
