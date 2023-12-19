@@ -27,7 +27,6 @@ exports.findAll = async (req, res) => {
         });
       });
     });
-
     res.json(systemlistData);
   } catch (error) {
     res.status(500).send({
@@ -76,7 +75,6 @@ exports.findAll = async (req, res) => {
     });
   }
 };
-
 
 
 // ______________________________________
