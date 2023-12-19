@@ -1,80 +1,38 @@
 const systemlistitem = require("../models/systemlistitem.model.js");
-const {getOrSetCache} = require("../middleware/redis.js")
+// const {getOrSetCache} = require("../middleware/redis.js")
 
 
-// exports.findAll = (req, res) => {
-//   systemlistitem.getAll((err, data) => {
-//     if (err)
-//       res.status(500).send({
-//         message:
-//           err.message || "Some error occurred while retrieving systemlistitem.",
-//       });
-//     else res.send(data);
-//   });
-// };
-
-
-exports.findAll = async (req, res) => {
-  try {
-    const systemlistData = await getOrSetCache("systemlistItem", async () => {
-      return new Promise((resolve, reject) => {
-        systemlistitem.getAll((err, data) => {
-          if (err) {
-            reject(err);
-          } else {
-            resolve(data);
-          }
-        });
+exports.findAll = (req, res) => {
+  systemlistitem.getAll((err, data) => {
+    if (err)
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving systemlistitem.",
       });
-    });
-    res.json(systemlistData);
-  } catch (error) {
-    res.status(500).send({
-      message:
-        error.message || "Some error occurred while retrieving systemlistitem.",
-    });
-  }
+    else res.send(data);
+  });
 };
 
 
-// exports.findOne = (req, res) => {
-//   systemlistitem.findById(req.params.id, (err, data) => {
-//     if (err) {
-//       if (err.kind === "not_found") {
-//         res.status(404).send({
-//           message: `Not found systemlistitem with id ${req.params.id}.`,
-//         });
-//       } else {
-//         res.status(500).send({
-//           message: "Error retrieving systemlistitem with id " + req.params.id,
-//         });
-//       }
-//     } else res.send(data);
-//   });
-// };
 
-exports.findAll = async (req, res) => {
-  try {
-    const systemlistData = await getOrSetCache("systemlistItem", async () => {
-      return new Promise((resolve, reject) => {
-        systemlistitem.getAll((err, data) => {
-          if (err) {
-            reject(err);
-          } else {
-            resolve(data);
-          }
+
+exports.findOne = (req, res) => {
+  systemlistitem.findById(req.params.id, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found systemlistitem with id ${req.params.id}.`,
         });
-      });
-    });
-
-    res.json(systemlistData);
-  } catch (error) {
-    res.status(500).send({
-      message:
-        error.message || "Some error occurred while retrieving systemlistitem.",
-    });
-  }
+      } else {
+        res.status(500).send({
+          message: "Error retrieving systemlistitem with id " + req.params.id,
+        });
+      }
+    } else res.send(data);
+  });
 };
+
+
 
 
 // ______________________________________
